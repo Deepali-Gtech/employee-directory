@@ -13,9 +13,16 @@ class Employee extends Component {
     this.loadEmployees();
   }
 
-  handleBtnClick = event => {
+  handleSort = event => {
     console.log("sort by name");
     this.sortEmployees();
+  };
+
+  handleFilter = event => {
+    console.log("filter by name");
+    let filterText = document.getElementById('filter').value
+    console.log(filterText);
+    this.filterEmployees(filterText);
   };
 
   loadEmployees = () => {
@@ -38,12 +45,29 @@ class Employee extends Component {
       employees: employees
     });
   };
+
+  filterEmployees = (filterText) => {
+    console.log("inside")
+    console.log(filterText)
+    let employees = this.state.employees
+    let newEmployees = employees.filter(function (employee) {
+      return employee.name.first.toLowerCase().includes(filterText.toLowerCase());
+  });
+
+    return this.setState({
+      employees: newEmployees
+    });
+  };
   
 
   render() {
     return (
       <div>
-        <h2>Output:-</h2>
+        <button className="btn btn-success mt-5 mb-5" onClick={this.handleSort}>Sort By First Name</button>
+        <div>
+        <input id="filter"></input>
+        <button className="btn btn-success mt-5 mb-5" onClick={this.handleFilter}>Filter By First Name</button>
+        </div>
         <table border={2} cellPadding={5}>
           <thead>
             <tr>
@@ -66,7 +90,7 @@ class Employee extends Component {
             }
           </tbody>
         </table>
-        <button className="btn btn-success mt-5 mb-5" onClick={this.handleBtnClick}>Sort By First Name</button>
+        
       </div>
     );
   }
