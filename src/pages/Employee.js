@@ -25,6 +25,11 @@ class Employee extends Component {
     this.filterEmployees(filterText);
   };
 
+  handleClearFilter = event => {
+    console.log("Clear Filter");
+    this.clearFilterEmployees();
+  };
+
   loadEmployees = () => {
     API.getEmployees()
       .then(res => {
@@ -55,7 +60,14 @@ class Employee extends Component {
   });
 
     return this.setState({
-      employees: newEmployees
+      employees: newEmployees,
+      original: employees
+    });
+  };
+
+  clearFilterEmployees = (filterText) => {
+    return this.setState({
+      employees: this.state.original
     });
   };
   
@@ -67,6 +79,7 @@ class Employee extends Component {
         <div>
         <input id="filter"></input>
         <button className="btn btn-success mt-5 mb-5" onClick={this.handleFilter}>Filter By First Name</button>
+        <button className="btn btn-success mt-5 mb-5" onClick={this.handleClearFilter}>Clear Filter</button>
         </div>
         <table border={2} cellPadding={5}>
           <thead>
