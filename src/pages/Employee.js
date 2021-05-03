@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Table from "../components/Table";
 import API from "../utils/API";
 
 class Employee extends Component {
@@ -70,7 +71,6 @@ class Employee extends Component {
       employees: this.state.original
     });
   };
-  
 
   render() {
     return (
@@ -81,29 +81,7 @@ class Employee extends Component {
         <button className="btn btn-success mt-5 mb-5" onClick={this.handleFilter}>Filter By First Name</button>
         <button className="btn btn-success mt-5 mb-5" onClick={this.handleClearFilter}>Clear Filter</button>
         </div>
-        <table border={2} cellPadding={5}>
-          <thead>
-            <tr>
-              <td>First Name</td>
-              <td>Last Name</td>
-              <td>Email ID</td>
-            </tr>
-          </thead>
-
-          <tbody>
-            {
-              this.state.employees &&
-              this.state.employees.map(function (element) {
-                return <tr>
-                  <td>{element.name.first}</td>
-                  <td>{element.name.last}</td>
-                  <td>{element.email}</td>
-                </tr>;
-              })
-            }
-          </tbody>
-        </table>
-        
+        <Table results={this.state.employees}/>       
       </div>
     );
   }
