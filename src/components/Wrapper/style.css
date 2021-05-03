@@ -2,3 +2,7 @@
   min-height: 100%;
   padding-bottom: 100px;
 }
+.container{
+  text-align: left;
+  padding-left: 10em;
+}

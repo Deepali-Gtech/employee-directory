@@ -1,9 +1,11 @@
 import React from "react";
 import "./style.css";
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function Table(props) {
   return (
-    <table border={2} cellPadding={5}>
+    <div class="tablecontent">
+    <table border="1" width="100%">
           <thead>
             <tr>
               <td>Image</td>
@@ -29,6 +31,7 @@ function Table(props) {
             }
           </tbody>
         </table>
+        </div>
   );
 }
 

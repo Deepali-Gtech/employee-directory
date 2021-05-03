@@ -58,7 +58,7 @@ class Employee extends Component {
     let employees = this.state.employees
     let newEmployees = employees.filter(function (employee) {
       return employee.name.first.toLowerCase().includes(filterText.toLowerCase());
-  });
+    });
 
     return this.setState({
       employees: newEmployees,
@@ -74,14 +74,18 @@ class Employee extends Component {
 
   render() {
     return (
-      <div>
-        <button className="btn btn-success mt-5 mb-5" onClick={this.handleSort}>Sort By First Name</button>
-        <div>
-        <input id="filter"></input>
-        <button className="btn btn-success mt-5 mb-5" onClick={this.handleFilter}>Filter By First Name</button>
-        <button className="btn btn-success mt-5 mb-5" onClick={this.handleClearFilter}>Clear Filter</button>
+
+      <div class="container" >
+        <button className="btn btn-primary btn-lg btn-block" onClick={this.handleSort}>Sort By First Name</button> <br />
+
+        <div class="row">
+          <input class="col" id="filter" placeholder="filter criteria"></input>
+          <button className="btn btn-info col" onClick={this.handleFilter}>Filter By First Name</button>
+          <button className="btn btn-warning col" onClick={this.handleClearFilter}>Clear Filter</button>
         </div>
-        <Table results={this.state.employees}/>       
+        <br/>
+
+        <Table results={this.state.employees} />
       </div>
     );
   }
